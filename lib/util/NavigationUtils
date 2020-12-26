@@ -1,0 +1,13 @@
+import 'package:flutter/material.dart';
+
+class NavigationUtils {
+  static onGenerateRoute(RouteSettings routeSettings) {
+    return new MaterialPageRoute(
+      builder: (context) {
+        WidgetUtils.me.init(context);
+        return StorageUtils.me.isLogged() ? HomeScreen() : ForkScreen();
+      },
+      settings: routeSettings,
+    );
+  }
+}
