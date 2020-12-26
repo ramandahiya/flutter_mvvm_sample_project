@@ -7,9 +7,6 @@ A new sample Flutter MVVM application.
  <img src="assets/AndroidMVVM.png">
 
 
-### Architecture
-<img src="assets/architecture.png" height="540">
-
 ### Flow
 <img src="assets/MVVMFlow.png" height="540">
  
