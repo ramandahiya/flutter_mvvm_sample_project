@@ -1,12 +1,27 @@
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_mvvm/ui/splash_page.dart';
 import 'package:flutter_app_mvvm/view%20models/movie_list_view_model.dart';
 import 'package:flutter_app_mvvm/view%20models/user_list_view_model.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
 
-void main() {
+// void main() {
+//   runApp(MyApp());
+// }
+
+Future<void> main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+ // await Firebase.initializeApp();
+  await Firebase.initializeApp();
+
   runApp(MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
 
