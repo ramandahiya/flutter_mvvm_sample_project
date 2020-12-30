@@ -16,9 +16,8 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 
-// void main() {
-//   runApp(MyApp());
-// }
+
+
 
 Future<void> main() async {
 
@@ -39,8 +38,10 @@ Future<void> main() async {
     print('runZonedGuarded: Caught error in my root zone.');
     FirebaseCrashlytics.instance.recordError(error, stackTrace);
   });
-  //runApp(MyApp());
+
 }
+
+
 
 
 // void _incrementCounter() {
@@ -53,8 +54,6 @@ Future<void> main() async {
 //     _counter++;
 //   });
 // }
-
-
 
 
 class MyApp extends StatelessWidget {
@@ -82,10 +81,11 @@ class MyApp extends StatelessWidget {
           theme: new ThemeData(
             primarySwatch: Colors.blue,
           ),
+
           home: Splash(),
+
         )
     );
-
 
 
   }

@@ -28,11 +28,12 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
 
+  TextField searchTextField2;
+
   @override
   void initState() {
 
-    String s;
-    int d=s.length;
+    _loader();
 
     _Notification();
 
@@ -46,13 +47,36 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
     )..addListener(() {
       setState(() {});
     });
+
+
+    _textcontroller.addListener(_printLatestValue);
+
     super.initState();
+
   }
+
+  _printLatestValue() async {
+    print("Second text field: ${_textcontroller.text}");
+    // await Fluttertoast.showToast(
+    //     msg: "Wait Fetching Details ${_textcontroller.text}",
+    //     toastLength: Toast.LENGTH_SHORT,
+    //     gravity: ToastGravity.BOTTOM,
+    //     timeInSecForIos: 1,
+    //     backgroundColor: Colors.black54,
+    //     textColor: Colors.white,
+    //     fontSize: 16.0
+    // );
+
+  }
+
+  final TextEditingController _textcontroller = TextEditingController();
+  Text searchTextField;
 
   @override
   Widget build(BuildContext context) {
     final color = Colors.white;
     _scale = 1 - _controller.value;
+
 
     return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -86,15 +110,20 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
                           )),
                     ),
                     DelayedAnimation(
-                      child: Text(
+                      child: searchTextField =Text(
                         "Triad Technologies",
-                        style: TextStyle(
+                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 25.0,
                             color: color),
+
                       ),
 
                       delay: delayedAmount + 1000,
+                    ),
+
+                    searchTextField2 = TextField(
+                       controller: _textcontroller,
                     ),
 
                     // SizedBox(
@@ -111,6 +140,8 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
                       textColor: Colors.white,
                       onPressed: () {
 
+                       // String s= searchTextField.data;
+                      // searchTextField2.controller.value= s as TextEditingValue;
                         Navigator.push(context, new MaterialPageRoute(
                             builder: (context) => HomePage()
                         ));
@@ -205,6 +236,14 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
 
 
   }
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is removed from the
+    // widget tree.
+    _textcontroller.dispose();
+    super.dispose();
+  }
+
 
 
   void _Notification() {
@@ -312,5 +351,9 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
     );
   }
 
+
+}
+
+void _loader() {
 
 }
