@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 TextStyle textStyle = const TextStyle(
-    color: const Color(0XFFFFFFFF),
-    fontSize: 16.0,
+    color:  Colors.blue,
+    fontSize: 14.0,
     fontWeight: FontWeight.normal);
 
 ThemeData appTheme = new ThemeData(
-  hintColor: Colors.white,
+  hintColor: Colors.blue,
 );
 
-Color textFieldColor = const Color.fromRGBO(255, 255, 255, 0.1);
+Color textFieldColor = const Color.fromRGBO(20, 5, 5, 0.1);
 
 Color primaryColor = const Color(0xFF00c497);
 

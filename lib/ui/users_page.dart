@@ -46,6 +46,7 @@ class _UsersState extends State<Users> {
     vm.fetchUsers();
 
     return Scaffold(
+
         appBar: AppBar(
           title: Text('USERS'),
         ),
@@ -68,6 +69,7 @@ class _UsersState extends State<Users> {
                                   subtitle: Text(item.username),
                                    isThreeLine: true,
                                   trailing: Text(item.website),
+
                         ),
 
 

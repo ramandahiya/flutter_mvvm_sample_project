@@ -21,6 +21,7 @@ class _DelayedAnimationState extends State<DelayedAnimation>
   void initState() {
     super.initState();
 
+
     _controller =
         AnimationController(vsync: this, duration: Duration(milliseconds: 100));
     final curve =

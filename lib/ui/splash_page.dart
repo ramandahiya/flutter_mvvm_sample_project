@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_mvvm/ui/images_page.dart';
+import 'package:flutter_app_mvvm/ui/login/index.dart';
 import 'package:flutter_app_mvvm/ui/post_page.dart';
 
 import 'users_page.dart';
@@ -29,6 +30,8 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
 
   TextField searchTextField2;
+  final TextEditingController _textcontroller = TextEditingController();
+  Text searchTextField;
 
   @override
   void initState() {
@@ -69,8 +72,6 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
 
   }
 
-  final TextEditingController _textcontroller = TextEditingController();
-  Text searchTextField;
 
   @override
   Widget build(BuildContext context) {
@@ -82,11 +83,13 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
         debugShowCheckedModeBanner: false,
         home: Builder(
 
-          builder: (context) =>  Scaffold(
+           builder: (context) =>  Scaffold(
 
               backgroundColor: Color(0xFF8185E2),
+
               body: Center(
-                child: Column(
+
+                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
@@ -122,9 +125,9 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
                       delay: delayedAmount + 1000,
                     ),
 
-                    searchTextField2 = TextField(
-                       controller: _textcontroller,
-                    ),
+                    // searchTextField2 = TextField(
+                    //    controller: _textcontroller,
+                    // ),
 
                     // SizedBox(
                     //   height: 30.0,
@@ -144,6 +147,28 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
                       // searchTextField2.controller.value= s as TextEditingValue;
                         Navigator.push(context, new MaterialPageRoute(
                             builder: (context) => HomePage()
+
+
+                        ));
+
+                        //Navigator.of(context).pushNamed('/homepage');
+
+                        //Navigator.pushNamed(context, HomePage.routeName);
+                        // Navigator.push(context,MaterialPageRoute(builder: (context){return HomePage();}));
+                      },
+                      icon: Icon(Icons.home),
+                      label: Text('Continue'),
+
+                    ),
+
+                    FlatButton.icon(
+                      textColor: Colors.white,
+                      onPressed: () {
+
+                        // String s= searchTextField.data;
+                        // searchTextField2.controller.value= s as TextEditingValue;
+                        Navigator.push(context, new MaterialPageRoute(
+                            builder: (context) => LoginScreen()
                         ));
 
                         //Navigator.of(context).pushNamed('/homepage');
@@ -152,7 +177,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
                         // Navigator.push(context,MaterialPageRoute(builder: (context){return HomePage();}));
                       },
                       icon: Icon(Icons.account_balance_wallet),
-                      label: Text('Continue'),
+                      label: Text('Login'),
 
                     ),
 
@@ -236,6 +261,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
 
 
   }
+
   @override
   void dispose() {
     // Clean up the controller when the widget is removed from the

@@ -1,6 +1,9 @@
 import 'package:flutter_app_mvvm/models/beans/UsersBeans/address.dart';
 import 'package:flutter_app_mvvm/models/beans/UsersBeans/company.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+
+@JsonSerializable()
 class UserBean {
 
   int id;

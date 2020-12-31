@@ -45,7 +45,7 @@ class _ImagesState extends State<Images> {
           return
 
 
-            Center(
+          Center(
             child: Padding(
               padding: EdgeInsets.all(2),
               child: Image.network(_data[index].thumbnailUrl),
