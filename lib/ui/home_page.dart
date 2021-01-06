@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_mvvm/ui/screens/main_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_app_mvvm/ui/images_page.dart';
@@ -17,8 +18,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedPage = 0;
 
-  final _pageOptions = [
-    Users(), Posts(), Images()];
+  final
+  _pageOptions = [
+    Users(), Posts(), MainScreen()];
 
   var v1 =
       BottomNavigationBarItem(icon: Icon(Icons.person), title: Text('USERS'));
@@ -27,7 +29,7 @@ class _HomePageState extends State<HomePage> {
       icon: Icon(Icons.local_post_office), title: Text('POSTS'));
 
   var v3 =
-      BottomNavigationBarItem(icon: Icon(Icons.image), title: Text('IMAGES'));
+      BottomNavigationBarItem(icon: Icon(Icons.image), title: Text('home'));
 
   var v4 = BottomNavigationBarItem(
       icon: Icon(Icons.comment), title: Text('COMMENTS'));

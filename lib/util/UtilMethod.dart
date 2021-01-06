@@ -11,9 +11,9 @@ class UtilMethod {
   }
 
   // Gets the logged in status
-  static Future<String> _getLoggedInStatus() async {
+  static Future<String> getLoggedInStatus(String key) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    return pref.getString('isLoggedIn') ?? false;
+    return pref.getString(key) ?? false;
   }
 
 }
