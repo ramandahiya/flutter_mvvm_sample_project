@@ -3,9 +3,13 @@ import 'dart:async';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_mvvm/ui/screens/main_screen.dart';
 import 'package:flutter_app_mvvm/ui/splash_page.dart';
+import 'package:flutter_app_mvvm/util/const.dart';
 import 'package:flutter_app_mvvm/view%20models/movie_list_view_model.dart';
+import 'package:flutter_app_mvvm/view%20models/post_list_view_model.dart';
 import 'package:flutter_app_mvvm/view%20models/user_list_view_model.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -30,6 +34,7 @@ Future<void> main() async {
   FlutterError.onError = Crashlytics.instance.recordFlutterError;
   FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
 
+  GestureBinding.instance.resamplingEnabled = true;
 
   WidgetsFlutterBinding.ensureInitialized();
   runZonedGuarded(() {
@@ -74,18 +79,23 @@ class MyApp extends StatelessWidget {
             builder: (_) =>
                 MovieListViewModel(),
           ),
-        ],
-        child: MaterialApp(
-          title: 'Billing',
-          debugShowCheckedModeBanner: false,
-          theme: new ThemeData(
-            primarySwatch: Colors.blue,
+          ChangeNotifierProvider(
+            builder: (_) =>
+                PostListViewModel(),
           ),
+        ],
 
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: Constants.appName,
+          theme: Constants.lightTheme,
+          darkTheme: Constants.darkTheme,
           home: Splash(),
-
         )
+
     );
+
+
 
 
   }

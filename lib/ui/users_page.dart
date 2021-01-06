@@ -62,7 +62,6 @@ class _UsersState extends State<Users> {
                         Column(
                           children: <Widget>[
 
-
                                 ListTile(
                                   leading: CircleAvatar(backgroundColor: Colors.cyan,),
                                   title: Text(item.name),
@@ -70,8 +69,7 @@ class _UsersState extends State<Users> {
                                    isThreeLine: true,
                                   trailing: Text(item.website),
 
-                        ),
-
+                                ),
 
                              Divider()
 

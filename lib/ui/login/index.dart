@@ -13,12 +13,13 @@ import 'package:flutter_app_mvvm/util/components/TextFields/inputField.dart';
 
 class LoginScreen extends StatefulWidget {
   //const LoginScreen({Key key}) : super(key: key);
-
   @override
   LoginScreenState createState() => new LoginScreenState();
 }
 
+
 class LoginScreenState extends State<LoginScreen> {
+
   BuildContext context;
   final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -47,8 +48,8 @@ class LoginScreenState extends State<LoginScreen> {
 
   void _handleSubmitted() {
 
+    try {
 
-   try {
      final FormState form = formKey.currentState;
      if (!form.validate()) {
        autovalidate = true; // Start validating on every change.
@@ -66,7 +67,7 @@ class LoginScreenState extends State<LoginScreen> {
      }
 
 
-   }catch( onError) {
+    }catch( onError) {
         showInSnackBar(onError.message);
       }
 
@@ -101,7 +102,7 @@ class LoginScreenState extends State<LoginScreen> {
                       AvatarGlow(
                         endRadius: 90,
                         duration: Duration(seconds: 2),
-                        glowColor: Colors.blue,
+                        glowColor: Colors.blueGrey,
                         repeat: true,
                         repeatPauseDuration: Duration(seconds: 2),
                         startDelay: Duration(seconds: 1),
@@ -146,6 +147,7 @@ class LoginScreenState extends State<LoginScreen> {
 
                       DelayedAnimation(
                         child: new Container(
+                          margin: const EdgeInsets.only(left: 30.0, right: 30.0, bottom: 22),
                           child: new Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -162,7 +164,7 @@ class LoginScreenState extends State<LoginScreen> {
                                         textStyle: textStyle,
                                         textFieldColor: textFieldColor,
                                         icon: Icons.mail_outline,
-                                        iconColor: Colors.blue,
+                                        iconColor: Colors.blueGrey,
                                         bottomMargin: 20.0,
                                         validateFunction:
                                             validations.validateEmail,
@@ -176,7 +178,7 @@ class LoginScreenState extends State<LoginScreen> {
                                         textStyle: textStyle,
                                         textFieldColor: textFieldColor,
                                         icon: Icons.lock_open,
-                                        iconColor: Colors.blue,
+                                        iconColor: Colors.blueGrey,
                                         bottomMargin: 30.0,
                                         validateFunction:
                                             validations.validatePassword,

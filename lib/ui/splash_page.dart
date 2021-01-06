@@ -1,7 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app_mvvm/ui/images_page.dart';
 import 'package:flutter_app_mvvm/ui/login/index.dart';
 import 'package:flutter_app_mvvm/ui/post_page.dart';
+import 'package:flutter_app_mvvm/ui/screens/main_screen.dart';
+import 'package:flutter_app_mvvm/util/UtilMethod.dart';
+import 'package:flutter_app_mvvm/util/const.dart';
 
 import 'users_page.dart';
 
@@ -51,6 +56,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
       setState(() {});
     });
 
+    _timerState();
 
     _textcontroller.addListener(_printLatestValue);
 
@@ -66,26 +72,39 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
     //     gravity: ToastGravity.BOTTOM,
     //     timeInSecForIos: 1,
     //     backgroundColor: Colors.black54,
-    //     textColor: Colors.white,
+    //     textColor: Colors.blueGrey,
     //     fontSize: 16.0
     // );
 
   }
 
+  Timer _timer;
+
+  _timerState() {
+    _timer = new Timer(const Duration(milliseconds: 4000), () {
+      setState(() {
+        if(UtilMethod.getLoggedInStatus("username") == "12345")
+        {
+
+          Navigator.push(context, new MaterialPageRoute(
+              builder: (context) => HomePage()
+          ));
+
+        }
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    final color = Colors.white;
+    final color = Colors.blueGrey;
     _scale = 1 - _controller.value;
 
-
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Builder(
+    return   Builder(
 
            builder: (context) =>  Scaffold(
 
-              backgroundColor: Color(0xFF8185E2),
+              backgroundColor: Constants.lightPrimary,
 
               body: Center(
 
@@ -97,7 +116,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
                     AvatarGlow(
                       endRadius: 90,
                       duration: Duration(seconds: 2),
-                      glowColor: Colors.white24,
+                      glowColor: Colors.blueGrey,
                       repeat: true,
                       repeatPauseDuration: Duration(seconds: 2),
                       startDelay: Duration(seconds: 1),
@@ -125,28 +144,15 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
                       delay: delayedAmount + 1000,
                     ),
 
-                    // searchTextField2 = TextField(
-                    //    controller: _textcontroller,
-                    // ),
 
-                    // SizedBox(
-                    //   height: 30.0,
-                    // ),
-                    // DelayedAnimation(
-                    //   child: Text(
-                    //     "Your New Personal",
-                    //     style: TextStyle(fontSize: 20.0, color: color),
-                    //   ),
-                    //   delay: delayedAmount + 3000,
-                    // ),
                     FlatButton.icon(
-                      textColor: Colors.white,
+                      textColor: Colors.blueGrey,
                       onPressed: () {
 
                        // String s= searchTextField.data;
                       // searchTextField2.controller.value= s as TextEditingValue;
-                        Navigator.push(context, new MaterialPageRoute(
-                            builder: (context) => HomePage()
+                        Navigator.pushReplacement(context, new MaterialPageRoute(
+                            builder: (context) => MainScreen()
 
 
                         ));
@@ -162,7 +168,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
                     ),
 
                     FlatButton.icon(
-                      textColor: Colors.white,
+                      textColor: Colors.blueGrey,
                       onPressed: () {
 
                         // String s= searchTextField.data;
@@ -181,31 +187,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
 
                     ),
 
-                    // SizedBox(
-                    //   height: 50.0,
-                    // ),
-                    // DelayedAnimation(
-                    //   child: GestureDetector(
-                    //     onTapDown: _onTapDown,
-                    //     onTapUp: _onTapUp,
-                    //     child: Transform.scale(
-                    //       scale: _scale,
-                    //       child: _animatedButtonUI,
-                    //     ),
-                    //   ),
-                    //   delay: delayedAmount + 4000,
-                    // ),
-                    // SizedBox(height: 30.0,),
-                    //  DelayedAnimation(
-                    //    child: Text(
-                    //      "I Already have An Account".toUpperCase(),
-                    //      style: TextStyle(
-                    //          fontSize: 20.0,
-                    //          fontWeight: FontWeight.bold,
-                    //          color: color),
-                    //    ),
-                    //    delay: delayedAmount + 5000,
-                    //  ),
+
                   ],
                 ),
               )
@@ -213,11 +195,9 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
 
             // ),
           ),
-          // routes: <String, WidgetBuilder>{
-          //   '/homepage': (BuildContext context) => new HomePage(),
-          //  },
-        )
-    );
+
+        );
+
   }
 
   Widget get _animatedButtonUI => Container(
@@ -225,7 +205,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
     width: 270,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(100.0),
-      color: Colors.white,
+      color: Colors.blueGrey,
     ),
     child: Center(
       child: Text(
@@ -338,7 +318,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
         gravity: ToastGravity.BOTTOM,
         timeInSecForIos: 1,
         backgroundColor: Colors.black54,
-        textColor: Colors.white,
+        textColor: Colors.blueGrey,
         fontSize: 16.0
     );
     Navigator.push(
@@ -348,6 +328,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
   }
 
   Future onDidRecieveLocalNotification(
+
       int id, String title, String body, String payload) async {
     // display a dialog with the notification details, tap ok to go to another page
     showDialog(
@@ -367,7 +348,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
                   gravity: ToastGravity.BOTTOM,
                   timeInSecForIos: 1,
                   backgroundColor: Colors.black54,
-                  textColor: Colors.white,
+                  textColor: Colors.blueGrey,
                   fontSize: 16.0
               );
             },
