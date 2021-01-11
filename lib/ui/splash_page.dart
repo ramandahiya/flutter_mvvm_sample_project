@@ -87,7 +87,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
         {
 
           Navigator.push(context, new MaterialPageRoute(
-              builder: (context) => HomePage()
+              builder: (context) => MainScreen()
           ));
 
         }

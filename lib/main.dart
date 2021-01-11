@@ -37,6 +37,7 @@ Future<void> main() async {
   GestureBinding.instance.resamplingEnabled = true;
 
   WidgetsFlutterBinding.ensureInitialized();
+
   runZonedGuarded(() {
     runApp(MyApp());
   }, (error, stackTrace) {

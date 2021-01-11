@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_mvvm/models/beans/PostBeans/PostBean.dart';
 import 'package:flutter_app_mvvm/models/beans/UsersBeans/UserBean.dart';
+import 'package:flutter_app_mvvm/ui/camera/CameraPage.dart';
 import 'package:flutter_app_mvvm/util/const.dart';
 import 'package:flutter_app_mvvm/util/places.dart';
 import 'package:flutter_app_mvvm/view%20models/post_list_view_model.dart';
@@ -38,7 +39,11 @@ class Home extends StatelessWidget {
             icon: IconBadge(
               icon: Icons.notifications_none,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, new MaterialPageRoute(
+                  builder: (context) => CameraPage()
+              ));
+            },
           ),
         ],
       ),
