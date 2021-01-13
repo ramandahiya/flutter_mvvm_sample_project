@@ -49,6 +49,7 @@ dependencies:
   logger: any  #for logging purpose
  # splashscreen: ^1.2.0
   image_picker: ^0.6.1+4
+  location: ^3.2.1
 
 
 dev_dependencies:

@@ -72,7 +72,7 @@ class LoginScreenState extends State<LoginScreen> {
       }
 
 
-   showLoader();
+    showLoader();
   }
 
   bool _isVisible = true;

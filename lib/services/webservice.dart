@@ -1,5 +1,6 @@
 
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter_app_mvvm/models/beans/PostBeans/PostBean.dart';
 import 'package:flutter_app_mvvm/models/beans/UsersBeans/UserBean.dart';
 import 'package:flutter_app_mvvm/models/movie.dart';
@@ -55,5 +56,16 @@ class Webservice {
       throw Exception("Unable to perform request!");
     }
   }
+
+  void Upload(String filename, String url) async {
+
+    var request = http.MultipartRequest('POST', Uri.parse(url));
+
+    request.files.add( http.MultipartFile('picture', File(filename).readAsBytes().asStream(), File(filename).lengthSync(),
+    filename: filename.split("/").last));
+
+    var res = await request.send();
+  }
+
 
 }

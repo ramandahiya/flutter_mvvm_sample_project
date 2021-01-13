@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_mvvm/util/places.dart';
 import 'package:flutter_app_mvvm/widgets/icon_badge.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:location/location.dart';
 
-class Details extends StatelessWidget {
+class Details extends StatefulWidget {
+  @override
+  _DetailsState createState() => _DetailsState();
+}
+
+class _DetailsState extends State<Details> {
+
+
+  @override
+  void initState() {
+    locationFetch();
+
+  }
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return new Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(
@@ -157,5 +174,74 @@ class Details extends StatelessWidget {
         },
       ),
     );
+  }
+
+  Location location;
+  Future<void> locationFetch() async {
+     location = new Location();
+    location.enableBackgroundMode(enable: true);
+
+    bool _serviceEnabled;
+    PermissionStatus _permissionGranted;
+    LocationData _locationData;
+
+    _serviceEnabled = await location.serviceEnabled();
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled) {
+        return;
+      }
+    }
+
+    _permissionGranted = await location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await location.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted) {
+        return;
+      }
+    }
+
+    _locationData = await location.getLocation();
+    // You can also get continuous callbacks when your position is changing:
+
+
+    location.onLocationChanged.listen((LocationData currentLocation) {
+    // Use current location
+     // Setup( '${currentLocation.latitude} +", "+ ${currentLocation.longitude}');
+      showInSnackBar('${currentLocation.latitude} +", "+ ${currentLocation.longitude}');
+    });
+
+  }
+
+
+  @override
+  void deactivate() {
+    location.onLocationChanged.listen(null);
+
+  }
+
+  @override
+  void dispose() {
+  }
+
+  Future<void> Setup(String value) async {
+
+    await Fluttertoast.showToast(
+        msg: value,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIos: 1,
+        backgroundColor: Colors.black54,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
+
+  }
+
+  void showInSnackBar(String value) {
+
+    if(_scaffoldKey!=null)
+    _scaffoldKey.currentState
+        .showSnackBar(new SnackBar(content: new Text(value)));
   }
 }

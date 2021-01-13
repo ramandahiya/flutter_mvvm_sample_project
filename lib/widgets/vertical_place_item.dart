@@ -101,6 +101,7 @@ class VerticalPlaceItem extends StatelessWidget {
               },
             ),
           );
+
         },
       ),
     );
