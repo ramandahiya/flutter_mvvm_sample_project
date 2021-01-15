@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_mvvm/ui/paypal/home.dart';
+import 'package:flutter_app_mvvm/ui/paypal/login.dart';
+import 'package:flutter_app_mvvm/ui/paypal/wallet.dart';
 import 'package:flutter_app_mvvm/ui/screens/home.dart';
 import 'package:flutter_app_mvvm/widgets/icon_badge.dart';
 
@@ -18,7 +21,8 @@ class _MainScreenState extends State<MainScreen> {
         physics: NeverScrollableScrollPhysics(),
         controller: _pageController,
         onPageChanged: onPageChanged,
-        children: List.generate(4, (index) => Home()),
+        children: [ Home(),WalletScreen(),HomePage()]
+        ,
       ),
       bottomNavigationBar: BottomAppBar(
         child: Row(

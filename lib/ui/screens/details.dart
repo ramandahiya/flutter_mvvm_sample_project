@@ -15,8 +15,8 @@ class _DetailsState extends State<Details> {
   @override
   void initState() {
     locationFetch();
-
   }
+  
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
@@ -244,4 +244,6 @@ class _DetailsState extends State<Details> {
     _scaffoldKey.currentState
         .showSnackBar(new SnackBar(content: new Text(value)));
   }
+
+
 }
