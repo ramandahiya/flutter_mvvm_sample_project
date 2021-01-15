@@ -11,11 +11,11 @@ A new sample Flutter MVVM application with Camera, Geo location and API integrat
 <img src="assets/MVVMFlow.png" height="540">
  
 ### Screenshots
-<img src="assets/ss1.png" height="540">
-<img src="assets/ss2.png" height="540">
-<img src="assets/ss3.png" height="540">
-<img src="assets/ss4.png" height="540">
-<img src="assets/ss5.png" height="540">
+<img src="assets/ss1.jpg" height="540">
+<img src="assets/ss2.jpg" height="540">
+<img src="assets/ss3.jpg" height="540">
+<img src="assets/ss4.jpg" height="540">
+<img src="assets/ss5.jpg" height="540">
  
 
 ### Slides
