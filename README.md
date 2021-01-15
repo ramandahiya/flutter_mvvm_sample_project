@@ -1,6 +1,6 @@
 # flutter_app_mvvm
 
-A new sample Flutter MVVM application.
+A new sample Flutter MVVM application with Camera, Geo location and API integration.
 
 
 ### MVVM Pattern (Model View ViewModel)
@@ -9,6 +9,13 @@ A new sample Flutter MVVM application.
 
 ### Flow
 <img src="assets/MVVMFlow.png" height="540">
+ 
+### Screenshots
+<img src="assets/ss1.png" height="540">
+<img src="assets/ss2.png" height="540">
+<img src="assets/ss3.png" height="540">
+<img src="assets/ss4.png" height="540">
+<img src="assets/ss5.png" height="540">
  
 
 ### Slides
